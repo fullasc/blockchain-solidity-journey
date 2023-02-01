@@ -1,0 +1,38 @@
+type ActiveItem @entity {
+  id: ID!
+  buyer: Bytes! # Address. 0x000...0 if no one has bought it yet.
+  seller: Bytes! # Address. 0x000...0 if no one has sold it yet.
+  nftAddress: Bytes! # Address of the NFT contract.
+  tokenId: BigInt! # Token ID of the NFT.
+  price: BigInt # Price in wei.
+}
+
+type ItemListed @entity {
+  id: ID!
+  seller: Bytes! # Address.
+  nftAddress: Bytes! # Address of the NFT contract.
+  tokenId: BigInt! # Token ID of the NFT.
+  price: BigInt # Price in wei.
+}
+
+type ItemCanceled @entity {
+  id: ID!
+  buyer: Bytes! # Address.
+  nftAddress: Bytes! # Address of the NFT contract.
+  tokenId: BigInt! # Token ID of the NFT.
+}
+
+type ItemBought @entity {
+  id: ID!
+  buyer: Bytes! # Address.
+  nftAddress: Bytes! # Address of the NFT contract.
+  tokenId: BigInt! # Token ID of the NFT.
+  price: BigInt # Price in wei.
+}
+
+type WithdrawProceeded @entity {
+  id: ID!
+  sender: Bytes! # Address.
+  amount: BigInt! # Amount in wei.
+  success: Boolean!
+}
